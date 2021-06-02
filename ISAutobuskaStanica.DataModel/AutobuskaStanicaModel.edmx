@@ -1,0 +1,749 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AutobuskaStanicaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="AutobuskaStanicaModelStoreContainer">
+    <EntitySet Name="AutobuskaStanicas" EntityType="AutobuskaStanicaModel.Store.AutobuskaStanicas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RedVoznjes" EntityType="AutobuskaStanicaModel.Store.RedVoznjes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VoznaSezonas" EntityType="AutobuskaStanicaModel.Store.VoznaSezonas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ugovors" EntityType="AutobuskaStanicaModel.Store.Ugovors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AutobuskiPrevozniks" EntityType="AutobuskaStanicaModel.Store.AutobuskiPrevozniks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Autobus" EntityType="AutobuskaStanicaModel.Store.Autobus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vozacs" EntityType="AutobuskaStanicaModel.Store.Vozacs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Linijas" EntityType="AutobuskaStanicaModel.Store.Linijas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PregledLinijas" EntityType="AutobuskaStanicaModel.Store.PregledLinijas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Autobus_Elektricni" EntityType="AutobuskaStanicaModel.Store.Autobus_Elektricni" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Autobus_Zglobni" EntityType="AutobuskaStanicaModel.Store.Autobus_Zglobni" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="AutobuskaStanicaRedVoznje" Association="AutobuskaStanicaModel.Store.AutobuskaStanicaRedVoznje">
+      <End Role="AutobuskaStanica" EntitySet="AutobuskaStanicas" />
+      <End Role="RedVoznje" EntitySet="RedVoznjes" />
+    </AssociationSet>
+    <AssociationSet Name="VoznaSezonaRedVoznje" Association="AutobuskaStanicaModel.Store.VoznaSezonaRedVoznje">
+      <End Role="VoznaSezona" EntitySet="VoznaSezonas" />
+      <End Role="RedVoznje" EntitySet="RedVoznjes" />
+    </AssociationSet>
+    <AssociationSet Name="AutobuskaStanicaUgovor" Association="AutobuskaStanicaModel.Store.AutobuskaStanicaUgovor">
+      <End Role="AutobuskaStanica" EntitySet="AutobuskaStanicas" />
+      <End Role="Ugovor" EntitySet="Ugovors" />
+    </AssociationSet>
+    <AssociationSet Name="AutobuskiPrevoznikUgovor" Association="AutobuskaStanicaModel.Store.AutobuskiPrevoznikUgovor">
+      <End Role="AutobuskiPrevoznik" EntitySet="AutobuskiPrevozniks" />
+      <End Role="Ugovor" EntitySet="Ugovors" />
+    </AssociationSet>
+    <AssociationSet Name="AutobuskiPrevoznikAutobus" Association="AutobuskaStanicaModel.Store.AutobuskiPrevoznikAutobus">
+      <End Role="AutobuskiPrevoznik" EntitySet="AutobuskiPrevozniks" />
+      <End Role="Autobus" EntitySet="Autobus" />
+    </AssociationSet>
+    <AssociationSet Name="RedVoznjePregledLinija" Association="AutobuskaStanicaModel.Store.RedVoznjePregledLinija">
+      <End Role="PregledLinija" EntitySet="PregledLinijas" />
+      <End Role="RedVoznje" EntitySet="RedVoznjes" />
+    </AssociationSet>
+    <AssociationSet Name="AutobuskiPrevoznikLinija" Association="AutobuskaStanicaModel.Store.AutobuskiPrevoznikLinija">
+      <End Role="AutobuskiPrevoznik" EntitySet="AutobuskiPrevozniks" />
+      <End Role="Linija" EntitySet="Linijas" />
+    </AssociationSet>
+    <AssociationSet Name="AutobuskiPrevoznikVozac" Association="AutobuskaStanicaModel.Store.AutobuskiPrevoznikVozac">
+      <End Role="AutobuskiPrevoznik" EntitySet="AutobuskiPrevozniks" />
+      <End Role="Vozac" EntitySet="Vozacs" />
+    </AssociationSet>
+    <AssociationSet Name="PregledLinijaLinija" Association="AutobuskaStanicaModel.Store.PregledLinijaLinija">
+      <End Role="PregledLinija" EntitySet="PregledLinijas" />
+      <End Role="Linija" EntitySet="Linijas" />
+    </AssociationSet>
+    <AssociationSet Name="UgovorPregledLinija" Association="AutobuskaStanicaModel.Store.UgovorPregledLinija">
+      <End Role="Ugovor" EntitySet="Ugovors" />
+      <End Role="PregledLinija" EntitySet="PregledLinijas" />
+    </AssociationSet>
+    <AssociationSet Name="VozacLinija" Association="AutobuskaStanicaModel.Store.VozacLinija">
+      <End Role="Vozac" EntitySet="Vozacs" />
+      <End Role="Linija" EntitySet="Linijas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Elektricni_inherits_Autobus" Association="AutobuskaStanicaModel.Store.FK_Elektricni_inherits_Autobus">
+      <End Role="Autobus" EntitySet="Autobus" />
+      <End Role="Elektricni" EntitySet="Autobus_Elektricni" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zglobni_inherits_Autobus" Association="AutobuskaStanicaModel.Store.FK_Zglobni_inherits_Autobus">
+      <End Role="Autobus" EntitySet="Autobus" />
+      <End Role="Zglobni" EntitySet="Autobus_Zglobni" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AutobuskaStanicas">
+    <Key>
+      <PropertyRef Name="IDAS" />
+    </Key>
+    <Property Name="IDAS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NazivAS" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RedVoznjes">
+    <Key>
+      <PropertyRef Name="AutobuskaStanicaIDAS" />
+      <PropertyRef Name="VoznaSezonaIdSezone" />
+    </Key>
+    <Property Name="AutobuskaStanicaIDAS" Type="int" Nullable="false" />
+    <Property Name="VoznaSezonaIdSezone" Type="int" Nullable="false" />
+    <Property Name="DatumReda" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PregledLinija_IDPregleda" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="VoznaSezonas">
+    <Key>
+      <PropertyRef Name="IdSezone" />
+    </Key>
+    <Property Name="IdSezone" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NazivSezone" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ugovors">
+    <Key>
+      <PropertyRef Name="AutobuskaStanicaIDAS" />
+      <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+    </Key>
+    <Property Name="AutobuskaStanicaIDAS" Type="int" Nullable="false" />
+    <Property Name="AutobuskiPrevoznikIDAP" Type="int" Nullable="false" />
+    <Property Name="DatumSklapanja" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AutobuskiPrevozniks">
+    <Key>
+      <PropertyRef Name="IDAP" />
+    </Key>
+    <Property Name="IDAP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NazivPrevoznika" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Autobus">
+    <Key>
+      <PropertyRef Name="IDA" />
+      <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+    </Key>
+    <Property Name="IDA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AutobuskiPrevoznikIDAP" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vozacs">
+    <Key>
+      <PropertyRef Name="IDV" />
+      <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+    </Key>
+    <Property Name="IDV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AutobuskiPrevoznikIDAP" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Linijas">
+    <Key>
+      <PropertyRef Name="NazivLinije" />
+      <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+    </Key>
+    <Property Name="NazivLinije" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="AutobuskiPrevoznikIDAP" Type="int" Nullable="false" />
+    <Property Name="PregledLinija_IDPregleda" Type="int" Nullable="true" />
+    <Property Name="Vozac_IDV" Type="int" Nullable="true" />
+    <Property Name="Vozac_AutobuskiPrevoznikIDAP" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PregledLinijas">
+    <Key>
+      <PropertyRef Name="IDPregleda" />
+    </Key>
+    <Property Name="IDPregleda" Type="int" Nullable="false" />
+    <Property Name="Ugovor_AutobuskaStanicaIDAS" Type="int" Nullable="true" />
+    <Property Name="Ugovor_AutobuskiPrevoznikIDAP" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Autobus_Elektricni">
+    <Key>
+      <PropertyRef Name="IDA" />
+      <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+    </Key>
+    <Property Name="IDA" Type="int" Nullable="false" />
+    <Property Name="AutobuskiPrevoznikIDAP" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Autobus_Zglobni">
+    <Key>
+      <PropertyRef Name="IDA" />
+      <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+    </Key>
+    <Property Name="IDA" Type="int" Nullable="false" />
+    <Property Name="AutobuskiPrevoznikIDAP" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="AutobuskaStanicaRedVoznje">
+    <End Role="AutobuskaStanica" Type="AutobuskaStanicaModel.Store.AutobuskaStanicas" Multiplicity="1" />
+    <End Role="RedVoznje" Type="AutobuskaStanicaModel.Store.RedVoznjes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AutobuskaStanica">
+        <PropertyRef Name="IDAS" />
+      </Principal>
+      <Dependent Role="RedVoznje">
+        <PropertyRef Name="AutobuskaStanicaIDAS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VoznaSezonaRedVoznje">
+    <End Role="VoznaSezona" Type="AutobuskaStanicaModel.Store.VoznaSezonas" Multiplicity="1" />
+    <End Role="RedVoznje" Type="AutobuskaStanicaModel.Store.RedVoznjes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VoznaSezona">
+        <PropertyRef Name="IdSezone" />
+      </Principal>
+      <Dependent Role="RedVoznje">
+        <PropertyRef Name="VoznaSezonaIdSezone" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AutobuskaStanicaUgovor">
+    <End Role="AutobuskaStanica" Type="AutobuskaStanicaModel.Store.AutobuskaStanicas" Multiplicity="1" />
+    <End Role="Ugovor" Type="AutobuskaStanicaModel.Store.Ugovors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AutobuskaStanica">
+        <PropertyRef Name="IDAS" />
+      </Principal>
+      <Dependent Role="Ugovor">
+        <PropertyRef Name="AutobuskaStanicaIDAS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AutobuskiPrevoznikUgovor">
+    <End Role="AutobuskiPrevoznik" Type="AutobuskaStanicaModel.Store.AutobuskiPrevozniks" Multiplicity="1" />
+    <End Role="Ugovor" Type="AutobuskaStanicaModel.Store.Ugovors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AutobuskiPrevoznik">
+        <PropertyRef Name="IDAP" />
+      </Principal>
+      <Dependent Role="Ugovor">
+        <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AutobuskiPrevoznikAutobus">
+    <End Role="AutobuskiPrevoznik" Type="AutobuskaStanicaModel.Store.AutobuskiPrevozniks" Multiplicity="1" />
+    <End Role="Autobus" Type="AutobuskaStanicaModel.Store.Autobus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AutobuskiPrevoznik">
+        <PropertyRef Name="IDAP" />
+      </Principal>
+      <Dependent Role="Autobus">
+        <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RedVoznjePregledLinija">
+    <End Role="PregledLinija" Type="AutobuskaStanicaModel.Store.PregledLinijas" Multiplicity="0..1" />
+    <End Role="RedVoznje" Type="AutobuskaStanicaModel.Store.RedVoznjes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PregledLinija">
+        <PropertyRef Name="IDPregleda" />
+      </Principal>
+      <Dependent Role="RedVoznje">
+        <PropertyRef Name="PregledLinija_IDPregleda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AutobuskiPrevoznikLinija">
+    <End Role="AutobuskiPrevoznik" Type="AutobuskaStanicaModel.Store.AutobuskiPrevozniks" Multiplicity="1" />
+    <End Role="Linija" Type="AutobuskaStanicaModel.Store.Linijas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AutobuskiPrevoznik">
+        <PropertyRef Name="IDAP" />
+      </Principal>
+      <Dependent Role="Linija">
+        <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AutobuskiPrevoznikVozac">
+    <End Role="AutobuskiPrevoznik" Type="AutobuskaStanicaModel.Store.AutobuskiPrevozniks" Multiplicity="1" />
+    <End Role="Vozac" Type="AutobuskaStanicaModel.Store.Vozacs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AutobuskiPrevoznik">
+        <PropertyRef Name="IDAP" />
+      </Principal>
+      <Dependent Role="Vozac">
+        <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PregledLinijaLinija">
+    <End Role="PregledLinija" Type="AutobuskaStanicaModel.Store.PregledLinijas" Multiplicity="0..1" />
+    <End Role="Linija" Type="AutobuskaStanicaModel.Store.Linijas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PregledLinija">
+        <PropertyRef Name="IDPregleda" />
+      </Principal>
+      <Dependent Role="Linija">
+        <PropertyRef Name="PregledLinija_IDPregleda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UgovorPregledLinija">
+    <End Role="Ugovor" Type="AutobuskaStanicaModel.Store.Ugovors" Multiplicity="0..1" />
+    <End Role="PregledLinija" Type="AutobuskaStanicaModel.Store.PregledLinijas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ugovor">
+        <PropertyRef Name="AutobuskaStanicaIDAS" />
+        <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+      </Principal>
+      <Dependent Role="PregledLinija">
+        <PropertyRef Name="Ugovor_AutobuskaStanicaIDAS" />
+        <PropertyRef Name="Ugovor_AutobuskiPrevoznikIDAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VozacLinija">
+    <End Role="Vozac" Type="AutobuskaStanicaModel.Store.Vozacs" Multiplicity="0..1" />
+    <End Role="Linija" Type="AutobuskaStanicaModel.Store.Linijas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vozac">
+        <PropertyRef Name="IDV" />
+        <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+      </Principal>
+      <Dependent Role="Linija">
+        <PropertyRef Name="Vozac_IDV" />
+        <PropertyRef Name="Vozac_AutobuskiPrevoznikIDAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Elektricni_inherits_Autobus">
+    <End Role="Autobus" Type="AutobuskaStanicaModel.Store.Autobus" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Elektricni" Type="AutobuskaStanicaModel.Store.Autobus_Elektricni" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Autobus">
+        <PropertyRef Name="IDA" />
+        <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+      </Principal>
+      <Dependent Role="Elektricni">
+        <PropertyRef Name="IDA" />
+        <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zglobni_inherits_Autobus">
+    <End Role="Autobus" Type="AutobuskaStanicaModel.Store.Autobus" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Zglobni" Type="AutobuskaStanicaModel.Store.Autobus_Zglobni" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Autobus">
+        <PropertyRef Name="IDA" />
+        <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+      </Principal>
+      <Dependent Role="Zglobni">
+        <PropertyRef Name="IDA" />
+        <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AutobuskaStanicaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="AutobuskaStanicaModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AutobuskaStanicas" EntityType="AutobuskaStanicaModel.AutobuskaStanica" />
+          <EntitySet Name="RedVoznjes" EntityType="AutobuskaStanicaModel.RedVoznje" />
+          <AssociationSet Name="AutobuskaStanicaRedVoznje" Association="AutobuskaStanicaModel.AutobuskaStanicaRedVoznje">
+            <End Role="AutobuskaStanica" EntitySet="AutobuskaStanicas" />
+            <End Role="RedVoznje" EntitySet="RedVoznjes" />
+          </AssociationSet>
+          <EntitySet Name="VoznaSezonas" EntityType="AutobuskaStanicaModel.VoznaSezona" />
+          <AssociationSet Name="VoznaSezonaRedVoznje" Association="AutobuskaStanicaModel.VoznaSezonaRedVoznje">
+            <End Role="VoznaSezona" EntitySet="VoznaSezonas" />
+            <End Role="RedVoznje" EntitySet="RedVoznjes" />
+          </AssociationSet>
+          <EntitySet Name="Ugovors" EntityType="AutobuskaStanicaModel.Ugovor" />
+          <AssociationSet Name="AutobuskaStanicaUgovor" Association="AutobuskaStanicaModel.AutobuskaStanicaUgovor">
+            <End Role="AutobuskaStanica" EntitySet="AutobuskaStanicas" />
+            <End Role="Ugovor" EntitySet="Ugovors" />
+          </AssociationSet>
+          <EntitySet Name="AutobuskiPrevozniks" EntityType="AutobuskaStanicaModel.AutobuskiPrevoznik" />
+          <AssociationSet Name="AutobuskiPrevoznikUgovor" Association="AutobuskaStanicaModel.AutobuskiPrevoznikUgovor">
+            <End Role="AutobuskiPrevoznik" EntitySet="AutobuskiPrevozniks" />
+            <End Role="Ugovor" EntitySet="Ugovors" />
+          </AssociationSet>
+          <EntitySet Name="Autobus" EntityType="AutobuskaStanicaModel.Autobus" />
+          <AssociationSet Name="AutobuskiPrevoznikAutobus" Association="AutobuskaStanicaModel.AutobuskiPrevoznikAutobus">
+            <End Role="AutobuskiPrevoznik" EntitySet="AutobuskiPrevozniks" />
+            <End Role="Autobus" EntitySet="Autobus" />
+          </AssociationSet>
+          <EntitySet Name="Vozacs" EntityType="AutobuskaStanicaModel.Vozac" />
+          <EntitySet Name="Linijas" EntityType="AutobuskaStanicaModel.Linija" />
+          <EntitySet Name="PregledLinijas" EntityType="AutobuskaStanicaModel.PregledLinija" />
+          <AssociationSet Name="RedVoznjePregledLinija" Association="AutobuskaStanicaModel.RedVoznjePregledLinija">
+            <End Role="PregledLinija" EntitySet="PregledLinijas" />
+            <End Role="RedVoznje" EntitySet="RedVoznjes" />
+          </AssociationSet>
+          <AssociationSet Name="AutobuskiPrevoznikLinija" Association="AutobuskaStanicaModel.AutobuskiPrevoznikLinija">
+            <End Role="AutobuskiPrevoznik" EntitySet="AutobuskiPrevozniks" />
+            <End Role="Linija" EntitySet="Linijas" />
+          </AssociationSet>
+          <AssociationSet Name="AutobuskiPrevoznikVozac" Association="AutobuskaStanicaModel.AutobuskiPrevoznikVozac">
+            <End Role="AutobuskiPrevoznik" EntitySet="AutobuskiPrevozniks" />
+            <End Role="Vozac" EntitySet="Vozacs" />
+          </AssociationSet>
+          <AssociationSet Name="PregledLinijaLinija" Association="AutobuskaStanicaModel.PregledLinijaLinija">
+            <End Role="PregledLinija" EntitySet="PregledLinijas" />
+            <End Role="Linija" EntitySet="Linijas" />
+          </AssociationSet>
+          <AssociationSet Name="UgovorPregledLinija" Association="AutobuskaStanicaModel.UgovorPregledLinija">
+            <End Role="Ugovor" EntitySet="Ugovors" />
+            <End Role="PregledLinija" EntitySet="PregledLinijas" />
+          </AssociationSet>
+          <AssociationSet Name="VozacLinija" Association="AutobuskaStanicaModel.VozacLinija">
+            <End Role="Vozac" EntitySet="Vozacs" />
+            <End Role="Linija" EntitySet="Linijas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AutobuskaStanica">
+          <Key>
+            <PropertyRef Name="IDAS" />
+          </Key>
+          <Property Name="IDAS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazivAS" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="RedVoznjes" Relationship="AutobuskaStanicaModel.AutobuskaStanicaRedVoznje" FromRole="AutobuskaStanica" ToRole="RedVoznje" />
+          <NavigationProperty Name="Ugovors" Relationship="AutobuskaStanicaModel.AutobuskaStanicaUgovor" FromRole="AutobuskaStanica" ToRole="Ugovor" />
+        </EntityType>
+        <EntityType Name="RedVoznje">
+          <Key>
+            <PropertyRef Name="AutobuskaStanicaIDAS" />
+            <PropertyRef Name="VoznaSezonaIdSezone" />
+          </Key>
+          <NavigationProperty Name="AutobuskaStanica" Relationship="AutobuskaStanicaModel.AutobuskaStanicaRedVoznje" FromRole="RedVoznje" ToRole="AutobuskaStanica" />
+          <Property Name="AutobuskaStanicaIDAS" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VoznaSezona" Relationship="AutobuskaStanicaModel.VoznaSezonaRedVoznje" FromRole="RedVoznje" ToRole="VoznaSezona" />
+          <Property Name="VoznaSezonaIdSezone" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PregledLinija" Relationship="AutobuskaStanicaModel.RedVoznjePregledLinija" FromRole="RedVoznje" ToRole="PregledLinija" />
+          <Property Name="DatumReda" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <Association Name="AutobuskaStanicaRedVoznje">
+          <End Type="AutobuskaStanicaModel.AutobuskaStanica" Role="AutobuskaStanica" Multiplicity="1" />
+          <End Type="AutobuskaStanicaModel.RedVoznje" Role="RedVoznje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutobuskaStanica">
+              <PropertyRef Name="IDAS" />
+            </Principal>
+            <Dependent Role="RedVoznje">
+              <PropertyRef Name="AutobuskaStanicaIDAS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VoznaSezona">
+          <Key>
+            <PropertyRef Name="IdSezone" />
+          </Key>
+          <Property Name="IdSezone" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazivSezone" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="RedVoznjes" Relationship="AutobuskaStanicaModel.VoznaSezonaRedVoznje" FromRole="VoznaSezona" ToRole="RedVoznje" />
+        </EntityType>
+        <Association Name="VoznaSezonaRedVoznje">
+          <End Type="AutobuskaStanicaModel.VoznaSezona" Role="VoznaSezona" Multiplicity="1" />
+          <End Type="AutobuskaStanicaModel.RedVoznje" Role="RedVoznje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoznaSezona">
+              <PropertyRef Name="IdSezone" />
+            </Principal>
+            <Dependent Role="RedVoznje">
+              <PropertyRef Name="VoznaSezonaIdSezone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ugovor">
+          <Key>
+            <PropertyRef Name="AutobuskaStanicaIDAS" />
+            <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+          </Key>
+          <NavigationProperty Name="AutobuskaStanica" Relationship="AutobuskaStanicaModel.AutobuskaStanicaUgovor" FromRole="Ugovor" ToRole="AutobuskaStanica" />
+          <Property Name="AutobuskaStanicaIDAS" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AutobuskiPrevoznik" Relationship="AutobuskaStanicaModel.AutobuskiPrevoznikUgovor" FromRole="Ugovor" ToRole="AutobuskiPrevoznik" />
+          <Property Name="AutobuskiPrevoznikIDAP" Type="Int32" Nullable="false" />
+          <Property Name="DatumSklapanja" Type="String" Nullable="false" />
+          <NavigationProperty Name="PregledLinija" Relationship="AutobuskaStanicaModel.UgovorPregledLinija" FromRole="Ugovor" ToRole="PregledLinija" />
+        </EntityType>
+        <Association Name="AutobuskaStanicaUgovor">
+          <End Type="AutobuskaStanicaModel.AutobuskaStanica" Role="AutobuskaStanica" Multiplicity="1" />
+          <End Type="AutobuskaStanicaModel.Ugovor" Role="Ugovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutobuskaStanica">
+              <PropertyRef Name="IDAS" />
+            </Principal>
+            <Dependent Role="Ugovor">
+              <PropertyRef Name="AutobuskaStanicaIDAS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AutobuskiPrevoznik">
+          <Key>
+            <PropertyRef Name="IDAP" />
+          </Key>
+          <Property Name="IDAP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazivPrevoznika" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Ugovors" Relationship="AutobuskaStanicaModel.AutobuskiPrevoznikUgovor" FromRole="AutobuskiPrevoznik" ToRole="Ugovor" />
+          <NavigationProperty Name="Autobus" Relationship="AutobuskaStanicaModel.AutobuskiPrevoznikAutobus" FromRole="AutobuskiPrevoznik" ToRole="Autobus" />
+          <NavigationProperty Name="Linijas" Relationship="AutobuskaStanicaModel.AutobuskiPrevoznikLinija" FromRole="AutobuskiPrevoznik" ToRole="Linija" />
+          <NavigationProperty Name="Vozacs" Relationship="AutobuskaStanicaModel.AutobuskiPrevoznikVozac" FromRole="AutobuskiPrevoznik" ToRole="Vozac" />
+        </EntityType>
+        <Association Name="AutobuskiPrevoznikUgovor">
+          <End Type="AutobuskaStanicaModel.AutobuskiPrevoznik" Role="AutobuskiPrevoznik" Multiplicity="1" />
+          <End Type="AutobuskaStanicaModel.Ugovor" Role="Ugovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutobuskiPrevoznik">
+              <PropertyRef Name="IDAP" />
+            </Principal>
+            <Dependent Role="Ugovor">
+              <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Autobus">
+          <Key>
+            <PropertyRef Name="IDA" />
+            <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+          </Key>
+          <Property Name="IDA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AutobuskiPrevoznik" Relationship="AutobuskaStanicaModel.AutobuskiPrevoznikAutobus" FromRole="Autobus" ToRole="AutobuskiPrevoznik" />
+          <Property Name="AutobuskiPrevoznikIDAP" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Elektricni" BaseType="AutobuskaStanicaModel.Autobus">
+          </EntityType>
+        <EntityType Name="Zglobni" BaseType="AutobuskaStanicaModel.Autobus">
+          </EntityType>
+        <Association Name="AutobuskiPrevoznikAutobus">
+          <End Type="AutobuskaStanicaModel.AutobuskiPrevoznik" Role="AutobuskiPrevoznik" Multiplicity="1" />
+          <End Type="AutobuskaStanicaModel.Autobus" Role="Autobus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutobuskiPrevoznik">
+              <PropertyRef Name="IDAP" />
+            </Principal>
+            <Dependent Role="Autobus">
+              <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Vozac">
+          <Key>
+            <PropertyRef Name="IDV" />
+            <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+          </Key>
+          <Property Name="IDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="AutobuskiPrevoznik" Relationship="AutobuskaStanicaModel.AutobuskiPrevoznikVozac" FromRole="Vozac" ToRole="AutobuskiPrevoznik" />
+          <Property Name="AutobuskiPrevoznikIDAP" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Linija" Relationship="AutobuskaStanicaModel.VozacLinija" FromRole="Vozac" ToRole="Linija" />
+        </EntityType>
+        <EntityType Name="Linija">
+          <Key>
+            <PropertyRef Name="NazivLinije" />
+            <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+          </Key>
+          <Property Name="NazivLinije" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="10" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="AutobuskiPrevoznik" Relationship="AutobuskaStanicaModel.AutobuskiPrevoznikLinija" FromRole="Linija" ToRole="AutobuskiPrevoznik" />
+          <Property Name="AutobuskiPrevoznikIDAP" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PregledLinija" Relationship="AutobuskaStanicaModel.PregledLinijaLinija" FromRole="Linija" ToRole="PregledLinija" />
+          <NavigationProperty Name="Vozac" Relationship="AutobuskaStanicaModel.VozacLinija" FromRole="Linija" ToRole="Vozac" />
+        </EntityType>
+        <EntityType Name="PregledLinija">
+          <Key>
+            <PropertyRef Name="IDPregleda" />
+          </Key>
+          <NavigationProperty Name="RedVoznje" Relationship="AutobuskaStanicaModel.RedVoznjePregledLinija" FromRole="PregledLinija" ToRole="RedVoznje" />
+          <Property Name="IDPregleda" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Linija" Relationship="AutobuskaStanicaModel.PregledLinijaLinija" FromRole="PregledLinija" ToRole="Linija" />
+          <NavigationProperty Name="Ugovor" Relationship="AutobuskaStanicaModel.UgovorPregledLinija" FromRole="PregledLinija" ToRole="Ugovor" />
+        </EntityType>
+        <Association Name="RedVoznjePregledLinija">
+          <End Type="AutobuskaStanicaModel.PregledLinija" Role="PregledLinija" Multiplicity="0..1" />
+          <End Type="AutobuskaStanicaModel.RedVoznje" Role="RedVoznje" Multiplicity="0..1" />
+        </Association>
+        <Association Name="AutobuskiPrevoznikLinija">
+          <End Type="AutobuskaStanicaModel.AutobuskiPrevoznik" Role="AutobuskiPrevoznik" Multiplicity="1" />
+          <End Type="AutobuskaStanicaModel.Linija" Role="Linija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutobuskiPrevoznik">
+              <PropertyRef Name="IDAP" />
+            </Principal>
+            <Dependent Role="Linija">
+              <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AutobuskiPrevoznikVozac">
+          <End Type="AutobuskaStanicaModel.AutobuskiPrevoznik" Role="AutobuskiPrevoznik" Multiplicity="1" />
+          <End Type="AutobuskaStanicaModel.Vozac" Role="Vozac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutobuskiPrevoznik">
+              <PropertyRef Name="IDAP" />
+            </Principal>
+            <Dependent Role="Vozac">
+              <PropertyRef Name="AutobuskiPrevoznikIDAP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PregledLinijaLinija">
+          <End Type="AutobuskaStanicaModel.PregledLinija" Role="PregledLinija" Multiplicity="0..1" />
+          <End Type="AutobuskaStanicaModel.Linija" Role="Linija" Multiplicity="*" />
+        </Association>
+        <Association Name="UgovorPregledLinija">
+          <End Type="AutobuskaStanicaModel.Ugovor" Role="Ugovor" Multiplicity="0..1" />
+          <End Type="AutobuskaStanicaModel.PregledLinija" Role="PregledLinija" Multiplicity="0..1" />
+        </Association>
+        <Association Name="VozacLinija">
+          <End Type="AutobuskaStanicaModel.Vozac" Role="Vozac" Multiplicity="0..1" />
+          <End Type="AutobuskaStanicaModel.Linija" Role="Linija" Multiplicity="0..1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AutobuskaStanicaModelStoreContainer" CdmEntityContainer="AutobuskaStanicaModelContainer">
+    <EntitySetMapping Name="AutobuskaStanicas">
+      <EntityTypeMapping TypeName="IsTypeOf(AutobuskaStanicaModel.AutobuskaStanica)">
+        <MappingFragment StoreEntitySet="AutobuskaStanicas">
+          <ScalarProperty Name="IDAS" ColumnName="IDAS" />
+          <ScalarProperty Name="NazivAS" ColumnName="NazivAS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RedVoznjes">
+      <EntityTypeMapping TypeName="IsTypeOf(AutobuskaStanicaModel.RedVoznje)">
+        <MappingFragment StoreEntitySet="RedVoznjes">
+          <ScalarProperty Name="AutobuskaStanicaIDAS" ColumnName="AutobuskaStanicaIDAS" />
+          <ScalarProperty Name="VoznaSezonaIdSezone" ColumnName="VoznaSezonaIdSezone" />
+          <ScalarProperty Name="DatumReda" ColumnName="DatumReda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VoznaSezonas">
+      <EntityTypeMapping TypeName="IsTypeOf(AutobuskaStanicaModel.VoznaSezona)">
+        <MappingFragment StoreEntitySet="VoznaSezonas">
+          <ScalarProperty Name="IdSezone" ColumnName="IdSezone" />
+          <ScalarProperty Name="NazivSezone" ColumnName="NazivSezone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ugovors">
+      <EntityTypeMapping TypeName="IsTypeOf(AutobuskaStanicaModel.Ugovor)">
+        <MappingFragment StoreEntitySet="Ugovors">
+          <ScalarProperty Name="AutobuskaStanicaIDAS" ColumnName="AutobuskaStanicaIDAS" />
+          <ScalarProperty Name="AutobuskiPrevoznikIDAP" ColumnName="AutobuskiPrevoznikIDAP" />
+          <ScalarProperty Name="DatumSklapanja" ColumnName="DatumSklapanja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AutobuskiPrevozniks">
+      <EntityTypeMapping TypeName="IsTypeOf(AutobuskaStanicaModel.AutobuskiPrevoznik)">
+        <MappingFragment StoreEntitySet="AutobuskiPrevozniks">
+          <ScalarProperty Name="IDAP" ColumnName="IDAP" />
+          <ScalarProperty Name="NazivPrevoznika" ColumnName="NazivPrevoznika" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Autobus">
+      <EntityTypeMapping TypeName="IsTypeOf(AutobuskaStanicaModel.Autobus)">
+        <MappingFragment StoreEntitySet="Autobus">
+          <ScalarProperty Name="IDA" ColumnName="IDA" />
+          <ScalarProperty Name="AutobuskiPrevoznikIDAP" ColumnName="AutobuskiPrevoznikIDAP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(AutobuskaStanicaModel.Elektricni)">
+        <MappingFragment StoreEntitySet="Autobus_Elektricni">
+          <ScalarProperty Name="IDA" ColumnName="IDA" />
+          <ScalarProperty Name="AutobuskiPrevoznikIDAP" ColumnName="AutobuskiPrevoznikIDAP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(AutobuskaStanicaModel.Zglobni)">
+        <MappingFragment StoreEntitySet="Autobus_Zglobni">
+          <ScalarProperty Name="IDA" ColumnName="IDA" />
+          <ScalarProperty Name="AutobuskiPrevoznikIDAP" ColumnName="AutobuskiPrevoznikIDAP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vozacs">
+      <EntityTypeMapping TypeName="IsTypeOf(AutobuskaStanicaModel.Vozac)">
+        <MappingFragment StoreEntitySet="Vozacs">
+          <ScalarProperty Name="IDV" ColumnName="IDV" />
+          <ScalarProperty Name="AutobuskiPrevoznikIDAP" ColumnName="AutobuskiPrevoznikIDAP" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Linijas">
+      <EntityTypeMapping TypeName="IsTypeOf(AutobuskaStanicaModel.Linija)">
+        <MappingFragment StoreEntitySet="Linijas">
+          <ScalarProperty Name="NazivLinije" ColumnName="NazivLinije" />
+          <ScalarProperty Name="AutobuskiPrevoznikIDAP" ColumnName="AutobuskiPrevoznikIDAP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PregledLinijas">
+      <EntityTypeMapping TypeName="IsTypeOf(AutobuskaStanicaModel.PregledLinija)">
+        <MappingFragment StoreEntitySet="PregledLinijas">
+          <ScalarProperty Name="IDPregleda" ColumnName="IDPregleda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="RedVoznjePregledLinija" TypeName="AutobuskaStanicaModel.RedVoznjePregledLinija" StoreEntitySet="RedVoznjes">
+      <EndProperty Name="PregledLinija">
+        <ScalarProperty Name="IDPregleda" ColumnName="PregledLinija_IDPregleda" />
+      </EndProperty>
+      <EndProperty Name="RedVoznje">
+        <ScalarProperty Name="AutobuskaStanicaIDAS" ColumnName="AutobuskaStanicaIDAS" />
+        <ScalarProperty Name="VoznaSezonaIdSezone" ColumnName="VoznaSezonaIdSezone" />
+      </EndProperty>
+      <Condition ColumnName="PregledLinija_IDPregleda" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PregledLinijaLinija" TypeName="AutobuskaStanicaModel.PregledLinijaLinija" StoreEntitySet="Linijas">
+      <EndProperty Name="PregledLinija">
+        <ScalarProperty Name="IDPregleda" ColumnName="PregledLinija_IDPregleda" />
+      </EndProperty>
+      <EndProperty Name="Linija">
+        <ScalarProperty Name="NazivLinije" ColumnName="NazivLinije" />
+        <ScalarProperty Name="AutobuskiPrevoznikIDAP" ColumnName="AutobuskiPrevoznikIDAP" />
+      </EndProperty>
+      <Condition ColumnName="PregledLinija_IDPregleda" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UgovorPregledLinija" TypeName="AutobuskaStanicaModel.UgovorPregledLinija" StoreEntitySet="PregledLinijas">
+      <EndProperty Name="Ugovor">
+        <ScalarProperty Name="AutobuskaStanicaIDAS" ColumnName="Ugovor_AutobuskaStanicaIDAS" />
+        <ScalarProperty Name="AutobuskiPrevoznikIDAP" ColumnName="Ugovor_AutobuskiPrevoznikIDAP" />
+      </EndProperty>
+      <EndProperty Name="PregledLinija">
+        <ScalarProperty Name="IDPregleda" ColumnName="IDPregleda" />
+      </EndProperty>
+      <Condition ColumnName="Ugovor_AutobuskaStanicaIDAS" IsNull="false" />
+      <Condition ColumnName="Ugovor_AutobuskiPrevoznikIDAP" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="VozacLinija" TypeName="AutobuskaStanicaModel.VozacLinija" StoreEntitySet="Linijas">
+      <EndProperty Name="Vozac">
+        <ScalarProperty Name="IDV" ColumnName="Vozac_IDV" />
+        <ScalarProperty Name="AutobuskiPrevoznikIDAP" ColumnName="Vozac_AutobuskiPrevoznikIDAP" />
+      </EndProperty>
+      <EndProperty Name="Linija">
+        <ScalarProperty Name="NazivLinije" ColumnName="NazivLinije" />
+        <ScalarProperty Name="AutobuskiPrevoznikIDAP" ColumnName="AutobuskiPrevoznikIDAP" />
+      </EndProperty>
+      <Condition ColumnName="Vozac_IDV" IsNull="false" />
+      <Condition ColumnName="Vozac_AutobuskiPrevoznikIDAP" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
