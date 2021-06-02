@@ -26,6 +26,7 @@ namespace ISAutobuskaStanica.WPF.ViewModels
             AddSezona = new MyICommand(OnAddSezona);
             CloseWin = new MyICommand(OnClose);
             Content = "Add";
+            Naziv = "";
         }
         public AddSezonaViewModel(VoznaSezona vs)
         {
@@ -42,10 +43,27 @@ namespace ISAutobuskaStanica.WPF.ViewModels
             Naziv = "";
             Window.Close();
         }
-
+        private string error;
+        public string Error
+        {
+            get
+            {
+                return error;
+            }
+            set
+            {
+                error = value;
+                OnPropertyChanged("Error");
+            }
+        }
         public string Naziv { get; set; }
         private void OnAddSezona()
         {
+            if (Naziv.Trim().Equals("")) 
+            {
+                Error = "Ne sme naziv prazan da bude";
+                return;
+            }
             if (change)
             {
                 Sezona.NazivSezone = Naziv;
@@ -56,7 +74,7 @@ namespace ISAutobuskaStanica.WPF.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("nah", "nah");
+                    Error = "Greska pri upisu u bazu";
                 }
             }
             else 
@@ -68,7 +86,7 @@ namespace ISAutobuskaStanica.WPF.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("nah", "nah");
+                    Error = "Greska pri upisu u bazu";
                 }
             }
 

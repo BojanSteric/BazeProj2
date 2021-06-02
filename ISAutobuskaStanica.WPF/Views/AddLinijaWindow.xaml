@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISAutobuskaStanica.WPF.Views"
         mc:Ignorable="d"
-        Title="AddLinijaWindow" Height="200" Width="400">
+        Title="AddLinijaWindow" Height="300" Width="400">
     <Grid Background="black">
         <Label Background="gold" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,12,283.6,0">Naziv linije:</Label>
-        <TextBox Height="40" Text="{Binding Naziv, UpdateSourceTrigger=PropertyChanged}" Margin="10,65,268.6,65.4"/>
+        <TextBox Height="40" Text="{Binding Naziv, UpdateSourceTrigger=PropertyChanged}" Margin="10,78,268.6,152.4"/>
         <Label Background="gold" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="202,12,91.6,0">Id Prevoznika:</Label>
-        <TextBox Height="40" Text="{Binding IdPrevoznika, UpdateSourceTrigger=PropertyChanged}" Margin="202,65,76.6,65.4"/>
+        <TextBox Height="40" Text="{Binding IdPrevoznika, UpdateSourceTrigger=PropertyChanged}" Margin="187,78,91.6,152.4"/>
         <Button Command="{Binding AddLinija}" Width="100" Height="30" VerticalAlignment="Bottom" Content="Add" Margin="97,0,196.6,10.4"></Button>
         <Button Command="{Binding Cancel}"  Background="MistyRose" Width="100" Height="30" VerticalAlignment="Bottom" Content="Cancel" Margin="202,0,91.6,10.4"></Button>
+        <TextBlock Foreground="Red" Text="{Binding Error, UpdateSourceTrigger=PropertyChanged}" Margin="26,155,43.6,64.4"></TextBlock>
+
     </Grid>
 </Window>

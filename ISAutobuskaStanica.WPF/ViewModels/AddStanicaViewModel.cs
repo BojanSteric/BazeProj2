@@ -23,6 +23,7 @@ namespace ISAutobuskaStanica.WPF.ViewModels
         {
             AddStanica = new MyICommand(OnAddStanica);
             CloseWin = new MyICommand(OnClose);
+            Naziv = "";
         }
         public AddStanicaViewModel(AutobuskaStanica stanica) 
         {
@@ -33,6 +34,21 @@ namespace ISAutobuskaStanica.WPF.ViewModels
             Stanica = stanica;
             
         }
+
+        private string error;
+        public string Error
+        {
+            get
+            {
+                return error;
+            }
+            set
+            {
+                error = value;
+                OnPropertyChanged("Error");
+            }
+        }
+
         private void OnClose()
         {
             Naziv = "";
@@ -41,6 +57,13 @@ namespace ISAutobuskaStanica.WPF.ViewModels
         public string Naziv { get; set; }
         private void OnAddStanica()
         {
+
+            if (Naziv.Trim().Equals("")) 
+            {
+                Error = "Naziv ne sme biti prazan";
+                return;
+            }
+
             if (change)
             {
                 Stanica.NazivAS = Naziv;
@@ -51,7 +74,7 @@ namespace ISAutobuskaStanica.WPF.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("nah", "nah");
+                    Error = "Greska pri upisu u bazu";
                 }
             }
             else 
@@ -63,7 +86,7 @@ namespace ISAutobuskaStanica.WPF.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("nah", "nah");
+                    Error = "Greska pri upisu u bazu";
                 }
             }
         }

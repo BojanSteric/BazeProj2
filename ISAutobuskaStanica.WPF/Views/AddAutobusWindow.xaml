@@ -7,13 +7,15 @@
         mc:Ignorable="d"
         Title="AddAutobusWindow" Height="300" Width="400">
     <Grid Background="black">
-        <Label Background="gold" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="97,25,196.6,0">IdPrevoznika:</Label>
-        <TextBox Width="200" Height="40" Text="{Binding IdPrevoznika, UpdateSourceTrigger=PropertyChanged}" Margin="97,60,96.6,170.4"></TextBox>
-        <RadioButton Name="radioButtonE" IsChecked="{Binding Elektricni}" GroupName="RadioButtonTip" Content="Elektricni" Foreground="#FFFBFB9F" FontFamily="Segoe UI" HorizontalAlignment="Left" Height="45" Margin="10,160,0,0" VerticalAlignment="Top" Width="116"  FontSize="24" Background="#FFFBFB9F" BorderBrush="#FF1F5076"/>
-        <RadioButton Name="radioButtonZ" IsChecked="{Binding Zglobni}" GroupName="RadioButtonTip" Content="Zglobni" Foreground="#FFFBFB9F" FontFamily="Segoe UI" HorizontalAlignment="Left" Height="45" Margin="146,160,0,0" VerticalAlignment="Top" Width="110"  FontSize="24" Background="#FFFBFB9F" BorderBrush="#FF1F5076" RenderTransformOrigin="0.535,0.521"/>
-        <RadioButton Name="radioButtonD" IsChecked="{Binding Drugo}" GroupName="RadioButtonTip" Content="Drugo" Foreground="#FFFBFB9F" FontFamily="Segoe UI" HorizontalAlignment="Left" Height="45" Margin="292,160,0,0" VerticalAlignment="Top" Width="92"  FontSize="24" Background="#FFFBFB9F" BorderBrush="#FF1F5076"/>
+        <Label Background="gold" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="26,25,267.6,0">IdPrevoznika:</Label>
+        <TextBox Width="200" Height="40" Text="{Binding IdPrevoznika, UpdateSourceTrigger=PropertyChanged}" Margin="10,60,183.6,170.4"></TextBox>
+        <RadioButton Name="radioButtonE" IsChecked="{Binding Elektricni}" GroupName="RadioButtonTip" Content="Elektricni" Foreground="#FFFBFB9F" FontFamily="Segoe UI" HorizontalAlignment="Left" Height="45" Margin="248,25,0,0" VerticalAlignment="Top" Width="116"  FontSize="24" Background="#FFFBFB9F" BorderBrush="#FF1F5076"/>
+        <RadioButton Name="radioButtonZ" IsChecked="{Binding Zglobni}" GroupName="RadioButtonTip" Content="Zglobni" Foreground="#FFFBFB9F" FontFamily="Segoe UI" HorizontalAlignment="Left" Height="45" Margin="254,90,0,0" VerticalAlignment="Top" Width="110"  FontSize="24" Background="#FFFBFB9F" BorderBrush="#FF1F5076" RenderTransformOrigin="0.535,0.521"/>
+        <RadioButton Name="radioButtonD" IsChecked="{Binding Drugo}" GroupName="RadioButtonTip" Content="Drugo" Foreground="#FFFBFB9F" FontFamily="Segoe UI" HorizontalAlignment="Left" Height="45" Margin="254,161,0,0" VerticalAlignment="Top" Width="92"  FontSize="24" Background="#FFFBFB9F" BorderBrush="#FF1F5076"/>
 
         <Button Command="{Binding AddAutobus}" Width="100" Height="30" VerticalAlignment="Bottom" Content="Add" Margin="97,0,196.6,10.4"></Button>
         <Button Command="{Binding Cancel}" Background="MistyRose" Width="100" Height="30" VerticalAlignment="Bottom" Content="Cancel" Margin="202,0,91.6,10.4"></Button>
+        <TextBlock Foreground="Red" Text="{Binding Error, UpdateSourceTrigger=PropertyChanged}" Margin="18,114,183.6,64.4"></TextBlock>
+
     </Grid>
 </Window>

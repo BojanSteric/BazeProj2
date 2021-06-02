@@ -15,5 +15,7 @@
         <Button Command="{Binding Cancel}"  Background="MistyRose" Width="100" Height="30" VerticalAlignment="Bottom" Content="Cancel" Margin="202,0,91.6,10.4"></Button>
         <TextBox Height="40" Text="{Binding IdPrevoznika, UpdateSourceTrigger=PropertyChanged}" Margin="10,281,50.6,99"/>
         <Label Background="gold" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,246,283.6,0" Content="IdPrevoznika:"/>
+        <TextBlock Foreground="Red" Text="{Binding Error, UpdateSourceTrigger=PropertyChanged}" Margin="10,326,34.6,50" ></TextBlock>
+
     </Grid>
 </Window>

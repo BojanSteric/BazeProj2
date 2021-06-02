@@ -23,7 +23,19 @@ namespace ISAutobuskaStanica.WPF.ViewModels
             AddLinija = new MyICommand(OnAdd);
             Cancel = new MyICommand(OnCancel);
         }
-
+        private string error;
+        public string Error
+        {
+            get
+            {
+                return error;
+            }
+            set
+            {
+                error = value;
+                OnPropertyChanged("Error");
+            }
+        }
         private void OnCancel()
         {
             Window.Close();
@@ -37,15 +49,26 @@ namespace ISAutobuskaStanica.WPF.ViewModels
                 id = int.Parse(IdPrevoznika);
             } catch (Exception e)
             {
-                MessageBox.Show("Proverite da li ste pravilno uneli id prevoznika", "Error");
+                Error = e.Message;
+            }
+            if (id <= 0 )
+            {
+                Error = "Id ne sme biti manji od 0!";
+                return;
+            }
+            if (Naziv.Trim().Equals("")) 
+            {
+                Error = "Ime ne sme biti prazno!";
+                return;
             }
             if (Service.AddLinija(new DataModel.Linija() { NazivLinije = Naziv, AutobuskiPrevoznikIDAP = id }))
             {
                 MessageBox.Show("Uspesno dodata linija", "Success");
+                Window.Close();
             }
             else 
             {
-                MessageBox.Show("Error with adding to database", "Error");
+                Error = "Greska: Linija postoji ili je nepravilno kreirana";
             }
         }
 

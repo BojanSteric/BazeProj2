@@ -8,10 +8,12 @@
         Title="AddSezonaWindow" Height="200" Width="400">
     <Grid>
         <Grid Background="black">
-            <Label Background="gold" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="97,25,196.6,0">Naziv Sezone:</Label>
-            <TextBox Width="200" Height="40" Text="{Binding Naziv, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Label Background="gold" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,10,283.6,0">Naziv Sezone:</Label>
+            <TextBox Width="200" Height="40" Text="{Binding Naziv, UpdateSourceTrigger=PropertyChanged}" Margin="159,10,34.6,120.4"></TextBox>
             <Button Command="{Binding AddSezona}" Width="100" Height="30" VerticalAlignment="Bottom" Content="Add" Margin="97,0,196.6,10.4"></Button>
             <Button Command="{Binding CloseWin}" Background="MistyRose" Width="100" Height="30" VerticalAlignment="Bottom" Content="Cancel" Margin="202,0,91.6,10.4"></Button>
+            <TextBlock Foreground="Red" Text="{Binding Error, UpdateSourceTrigger=PropertyChanged}" Margin="10,70,34.6,45.4" ></TextBlock>
+
         </Grid>
     </Grid>
 </Window>

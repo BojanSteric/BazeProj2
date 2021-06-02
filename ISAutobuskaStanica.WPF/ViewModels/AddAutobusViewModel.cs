@@ -27,18 +27,38 @@ namespace ISAutobuskaStanica.WPF.ViewModels
             AddAutobus = new MyICommand(OnAdd);
             Cancel = new MyICommand(OnCancel);
         }
-
+        private string error;
+        public string Error
+        {
+            get
+            {
+                return error;
+            }
+            set
+            {
+                error = value;
+                OnPropertyChanged("Error");
+            }
+        }
         private void OnAdd()
         {
+
             int id = 0;
+            
             try
             {
                 id = int.Parse(IdPrevoznika);
             }
             catch (Exception e)
             {
-                MessageBox.Show("error: " + e.Message, "Error");
+                Error = e.Message;
             }
+
+            if (id <= 0) {
+                Error = "Id prevoznika ne sme biti manji od 0!";
+                return;
+            }
+
             if (Elektricni)
             {
                 ElektricniDAO dao = new ElektricniDAO();
@@ -49,7 +69,7 @@ namespace ISAutobuskaStanica.WPF.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("error with database ", "Error");
+                    Error = "Greska: Entitet postoji ili je nepravilno unet";
                 }
             }
             else if (Zglobni)
@@ -62,7 +82,7 @@ namespace ISAutobuskaStanica.WPF.ViewModels
                 }
                 else 
                 {
-                    MessageBox.Show("error with database ", "Error");
+                    Error = "Greska: Entitet postoji ili je nepravilno unet";
                 }
             }
             else if (Drugo)
@@ -74,12 +94,12 @@ namespace ISAutobuskaStanica.WPF.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("error with database ", "Error");
+                    Error = "Greska: Entitet postoji ili je nepravilno unet";
                 }
             }
             else 
             {
-                MessageBox.Show("error with database ", "Error");
+                Error = "Greska: Entitet postoji ili je nepravilno unet";
             }
         }
 

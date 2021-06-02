@@ -22,10 +22,13 @@ namespace ISAutobuskaStanica.WPF.ViewModels
         public string IdPrevoznika { get; set; }
 
         private VozacService Service = new VozacService();
-        public AddVozacViewModel() 
+        public AddVozacViewModel()
         {
             AddVozac = new MyICommand(OnAdd);
             Cancel = new MyICommand(OnCancel);
+            ImeV = "";
+            PrezimeV = "";
+            IdPrevoznika = "";
         }
 
         public AddVozacViewModel(Vozac v)
@@ -42,7 +45,19 @@ namespace ISAutobuskaStanica.WPF.ViewModels
         {
             Window.Close();
         }
-
+        private string error;
+        public string Error
+        {
+            get
+            {
+                return error;
+            }
+            set
+            {
+                error = value;
+                OnPropertyChanged("Error");
+            }
+        }
         private void OnAdd()
         {
             int id = 0;
@@ -52,7 +67,14 @@ namespace ISAutobuskaStanica.WPF.ViewModels
             }
             catch (Exception e)
             {
-                MessageBox.Show("Ne postoji ili niste ispravno uneli id prevoznika", "error");
+                Error = "greska pri unosu";
+            }
+            if (id <= 0) {
+                Error = "greska pri Proveri id";
+            }
+            if (ImeV.Trim().Equals("") || PrezimeV.Trim().Equals(""))
+            {
+                Error = "greska pri Proveri ime i prezime";
             }
             if (change)
             {
@@ -64,7 +86,7 @@ namespace ISAutobuskaStanica.WPF.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("Error with database", "Error");
+                    Error = "greska pri unosu u bazu";
                 }
             }
             else 
@@ -75,7 +97,7 @@ namespace ISAutobuskaStanica.WPF.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("Error with database", "Error");
+                    Error = "greska pri unosu u bazu";
                 }
             }
 

@@ -20,6 +20,16 @@ namespace ISAutobuskaStanica.WPF.ViewModels
         public AutobuskiPrevoznik AutobuskiPrevoznik { get; set; }
 
         private AutobuskiPrevoznikService Service = new AutobuskiPrevoznikService();
+        private string error;
+        public string Error {
+            get {
+                return error;
+            }
+            set {
+                error = value;
+                OnPropertyChanged("Error");
+            } 
+        }
 
         public AddAutobuskiPrevoznikViewModel() {
             AddCommand = new MyICommand(OnAddCommand);
@@ -42,29 +52,34 @@ namespace ISAutobuskaStanica.WPF.ViewModels
 
         private void OnAddCommand()
         {
+            if (Ime.Trim().Equals(String.Empty))
+            {
+                Error = "Postoji greska u unosu ili slicno!";
+                return;
+            }
             if (change)
             {
                 AutobuskiPrevoznik.NazivPrevoznika = Ime;
                 if (Service.ChangeAutobuskiPrevoznik(AutobuskiPrevoznik))
                 {
-                    MessageBox.Show("yay", "yay");
+                    MessageBox.Show("Success update", "Success");
                     Window.Close();
                 }
-                else
+                else 
                 {
-                    MessageBox.Show("nay", "nay");
+                    Error = "Postoji greska u unosu ili slicno!";
                 }
             }
             else 
             {
                 if (Service.AddAutobuskiPrevoznik(new AutobuskiPrevoznik() { NazivPrevoznika = Ime }))
                 {
-                    MessageBox.Show("yay", "yay");
+                    MessageBox.Show("Success add", "Success");
                     Window.Close();
                 }
                 else
                 {
-                    MessageBox.Show("nay", "nay");
+                    Error = "Postoji greska u unosu ili slicno!";
                 }
             }
         }
